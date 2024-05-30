@@ -23,23 +23,23 @@ import com.mayan.helpdesk.domain.enums.Perfil;
 public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id // Identificar a chave primária da entidade
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Especifica que o valor da chave é gerado pelo banco de dados com estratégia de identidade. 
 	protected Integer id;
 	protected String nome;
 	
-	@Column(unique = true)
+	@Column(unique = true) // Indica que o valor do campo no DB deve ser único.
 	protected String cpf;
 	
 	@Column(unique = true)
 	protected String email;
 	protected String senha;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
+	@ElementCollection(fetch = FetchType.EAGER) // Indica que é uma coleção de elementos que será carregada automaticamente quando a entidade carregar.
 	@CollectionTable(name = "PERFIS")
 	protected Set<Integer> perfis = new HashSet<>();
 	
-	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonFormat(pattern = "dd/MM/yyyy") // Especifica o formato de serialização para o campo dataCriacao
 	protected LocalDate dataCriacao = LocalDate.now();
 	
 	public Pessoa() {
