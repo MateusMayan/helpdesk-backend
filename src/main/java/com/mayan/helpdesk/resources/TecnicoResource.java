@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mayan.helpdesk.domain.Tecnico;
+import com.mayan.helpdesk.domain.dtos.TecnicoDTO;
 import com.mayan.helpdesk.services.TecnicoService;
 
 @RestController // Marca uma classe como controlador Spring, ela retorna dados diretamente em vez de exibir uma página HTML. 
@@ -20,9 +21,9 @@ public class TecnicoResource {
 	
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Tecnico> findById(@PathVariable Integer id) {
+	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
 		Tecnico obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}
 	
 }
