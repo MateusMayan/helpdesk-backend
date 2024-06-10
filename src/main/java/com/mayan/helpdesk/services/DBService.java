@@ -37,9 +37,10 @@ public class DBService {
 		Cliente cli2 = new Cliente(null, "Albert Einstein", "350.071.980-56", "einstein@mail.com", "123456");
 		
 		Chamado c1 = new Chamado(null, Prioridade.MÉDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro chamado", tec1, cli1);
+		Chamado c2 = new Chamado(null, Prioridade.ALTA, Status.ABERTO, "Chamado 02", "Primeiro chamado", tec3, cli2);
 		
 		tecnicoRepository.saveAll(Arrays.asList(tec1, tec2, tec3));
 		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
-		chamadoRepository.saveAll(Arrays.asList(c1));
+		chamadoRepository.saveAll(Arrays.asList(c1, c2));
 	}
 }
